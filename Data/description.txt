@@ -1,0 +1,5 @@
+These ward level well being scores present a combined measure of well-being indicators of the resident population based on 12 different indicators. Where possible each indicator score is compared with the England and Wales average, which is zero. Scores over 0 indicate a higher probability that the population on average will experience better well-being according to these measures.
+Users can adjust the weight of each indicator depending on what they consider to be the more or less important, thus generating bespoke scores. This is done either by entering a number between 0 and 10. The scores throughout the spreadsheet will update automatically.
+The tool combines data across a range of themes for the last five years of available data (2009-2013).
+
+https://data.london.gov.uk/dataset/london-ward-well-being-scores
