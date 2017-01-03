@@ -99,7 +99,7 @@ source: https://rpubs.com/m_dev/Intro-to-Spatial-Data-and-ggplot2
 rm(list= ls())  # clears the workspace
 capture.output(dev.off(), file ="NULL")    # clears all the plots. capture.output suppreses the output 
 
-setwd("C:/Users/ryank/Documents/City_University/Visual_Analytics/Coursework/Individual_coursework_visualanalytics/London_wellbeing_scores/")
+setwd("C:/Users/ryank/Documents/City_University/Visual_Analytics/Coursework/Individual_coursework_visualanalytics/London_wellbeing_scores/Data/")
 
 #capture.output suppreses the output of excel files which have been imported
 
@@ -423,6 +423,7 @@ dist_matrix <- gw.modelman$SDF@data[,2:13] %>%
 
 dist_matrix <- dist(dist_matrix[,13:24])
 
+##########5 clusters #################
 
 gwcluster <- kmeans(dist_matrix,5)
 
@@ -443,6 +444,50 @@ tm_shape(gw.modelman$SDF) +
      legend.title.size=1,
      legend.text.size=0.6,
      legend.outside=TRUE)
+
+####### 4 clusters  ################
+
+gwcluster <- kmeans(dist_matrix,4)
+
+#plot(silhouette(gwcluster,dist_matrix))
+
+gwcluster$cluster <- as.factor(gwcluster$cluster)
+gw.modelman$SDF@data$cluster_groups <- gwcluster$cluster 
+
+tm_shape(gw.modelman$SDF) +
+  tm_fill(col="cluster_groups", style="cat",id="geo_label", palette="Accent", size=0.2) + 
+  tm_borders(col="#636363", lwd=0.2) +
+  tm_facets(free.scales = FALSE) +
+  tm_layout(
+    frame = FALSE,
+    title.size=2,
+    title.position = c("left","top"),
+    inner.margins = c(0,0,0.15,0),
+    legend.title.size=1,
+    legend.text.size=0.6,
+    legend.outside=TRUE)
+
+########### 3 clusters ##################
+
+gwcluster <- kmeans(dist_matrix,3)
+
+#plot(silhouette(gwcluster,dist_matrix))
+
+gwcluster$cluster <- as.factor(gwcluster$cluster)
+gw.modelman$SDF@data$cluster_groups <- gwcluster$cluster 
+
+tm_shape(gw.modelman$SDF) +
+  tm_fill(col="cluster_groups", style="cat",id="geo_label", palette="Accent", size=0.2) + 
+  tm_borders(col="#636363", lwd=0.2) +
+  tm_facets(free.scales = FALSE) +
+  tm_layout(
+    frame = FALSE,
+    title.size=2,
+    title.position = c("left","top"),
+    inner.margins = c(0,0,0.15,0),
+    legend.title.size=1,
+    legend.text.size=0.6,
+    legend.outside=TRUE)
 
 ```
 
