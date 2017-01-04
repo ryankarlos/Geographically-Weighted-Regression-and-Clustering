@@ -4,5 +4,4 @@ Use of visual analytics techniques including geographically weighted regression 
 Includes the following:
 Raw data,
 Full code with comments in R script and R markdown, 
-Some quick exploratory analysis in Tableau, 
 A report 
